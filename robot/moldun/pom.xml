@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.avdw</groupId>
+    <artifactId>robocode-moldun</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <workingDirectory>${basedir}/../../core-1.2.9.6</workingDirectory>
+                    <arguments>
+                        <argument>-Xmx512M</argument>
+                        <argument>-Dsun.io.useCanonCaches=false</argument>
+                        <argument>-Ddebug=true</argument>
+                        <argument>-Xdebug</argument>
+                        <argument>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=19833</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>-jar</argument>
+                        <argument>${basedir}/../../core-1.2.9.6/libs/robocode.jar</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+        <dependency>
+            <groupId>net.avdw</groupId>
+            <artifactId>robocode.core</artifactId>
+            <version>1.2.9.6</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../../core-1.2.9.6/libs/robocode.jar</systemPath>
+        </dependency>
+    </dependencies>
+</project>
